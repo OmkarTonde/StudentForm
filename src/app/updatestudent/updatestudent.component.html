@@ -1,0 +1,84 @@
+
+<!-- <p>studentregform works!</p> -->
+<br/>
+<div *ngIf = "form"  class = "container" style="width:365px;margin-top:50px;" >
+
+    <div class="table bg-info">
+
+        <div>   
+
+            <form [formGroup]="form" (ngSubmit)="update()">
+
+                <div class="form-group"> 
+                <label>Student Name : </label>&nbsp;&nbsp;&nbsp;
+                <input type = "text" placeholder="Enter your full name"
+                 formControlName="student_name" required/>
+                
+                <div class="alert alert-primary" *ngIf = "form.get('student_name').invalid
+                &&  form.get('student_name').touched">
+
+                    <div *ngIf ="form.get('student_name').errors.required">
+
+                        name is required
+
+                    </div>
+
+                    <div *ngIf ="form.get('student_name').errors.pattern">
+
+                        name should  contain only characters
+
+                    </div>
+
+
+                </div>
+
+
+
+               </div>
+
+               <div class="form-group"> 
+                <label>Student Email : </label>&nbsp;&nbsp;&nbsp;
+                <input type = "email" placeholder="Enter your email" formControlName="student_email" required />
+                
+               </div>
+
+                
+                <div class="form-group"> 
+                <label>Student Age : </label>&nbsp;&nbsp;&nbsp;
+                <input type = "number" formControlName="student_age"/>
+               
+                </div>
+
+                <div class="form-group"> 
+                    <label>Graduated : </label>&nbsp;&nbsp;&nbsp;
+                    <input type = "checkbox" formControlName="student_isGraduate"/>
+                    <br/>
+                 </div>
+
+                
+                <div class="form-group"> 
+                <label>Branch : </label>&nbsp;&nbsp;&nbsp;
+                <select formControlName = "student_branch">
+
+                <option *ngFor = "let b of graduation_stream" [value]="b">
+                    {{b}}
+                </option>
+
+                </select>
+                <br/>
+                </div>
+
+             <div class="form-group"> 
+                <td><button type="Submit" class="btn btn-success" >SAVE</button> &nbsp;&nbsp;&nbsp;
+                <button type="reset" class="btn btn-danger">clear</button></td>
+
+            </div>
+                
+
+            </form>
+
+        </div>
+
+    </div>
+ 
+</div>
